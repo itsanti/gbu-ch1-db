@@ -29,3 +29,28 @@ WHERE
             LIMIT 18446744073709551615 OFFSET 5
         ) AS tmp
     );
+
+-- count rows
+
+SET @row = (SELECT COUNT(*) FROM days);
+
+CREATE TEMPORARY TABLE result (id BIGINT UNSIGNED);
+
+PREPARE stm FROM
+    'INSERT INTO
+        result
+    SELECT
+        id
+    FROM
+        days
+    ORDER BY
+        created_at DESC
+    LIMIT ? OFFSET 5';
+EXECUTE stm USING @row;
+
+DELETE FROM
+    days
+WHERE
+    id IN (
+        SELECT * FROM result
+    );
