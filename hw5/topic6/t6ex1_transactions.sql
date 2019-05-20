@@ -15,7 +15,8 @@ WHERE
 DELETE FROM
   shop.users
 WHERE
-    id = 1;
+    id = 1
+LIMIT 1;
 
 COMMIT;
 

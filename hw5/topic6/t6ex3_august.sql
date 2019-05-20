@@ -29,6 +29,31 @@ LEFT JOIN august ON gen_dates.day = august.created_at
 ORDER BY gen_dates.day;
 
 -- ######################
+-- ### solution 2
+-- ######################
+CREATE TEMPORARY TABLE last_days (
+    day INT
+);
+
+INSERT INTO last_days VALUES
+(0), (1), (2), (3), (4), (5), (6), (7), (8), (9),
+(10), (11), (12), (13), (14), (15), (16), (17), (18), 1(9),
+(20), (21), (22), (23), (24), (25), (26), (27), (28), (29), (30);
+
+SELECT
+    DATE(DATE('2018-08-31') - INTERVAL l.day DAY) AS day,
+    NOT ISNULL(p.name) AS order_exist
+FROM
+    last_days AS l
+LEFT JOIN
+    august AS a
+ON
+    DATE(DATE('2018-08-31') - INTERVAL l.day DAY) = a.created_at
+ORDER BY
+    day;
+
+
+-- ######################
 -- ### result
 -- ######################
 /*

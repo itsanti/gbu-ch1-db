@@ -52,8 +52,8 @@ SELECT
     ct.name
 FROM
     flights AS f
-    JOIN cities AS cf ON f.`from` = cf.label
-    JOIN cities AS ct ON f.`to` = ct.label
+    LEFT JOIN cities AS cf ON f.`from` = cf.label
+    LEFT JOIN cities AS ct ON f.`to` = ct.label
 ORDER BY
     f.id;
     

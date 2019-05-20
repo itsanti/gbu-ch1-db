@@ -26,7 +26,10 @@ SELECT
     p.created_at,
     p.updated_at
 FROM
-    products AS p JOIN catalogs AS c ON p.catalog_id = c.id;
+    products AS p
+LEFT JOIN
+    catalogs AS c
+ON p.catalog_id = c.id;
 
 -- ######################
 -- ### result

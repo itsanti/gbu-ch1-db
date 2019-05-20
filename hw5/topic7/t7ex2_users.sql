@@ -34,7 +34,7 @@ AS
     accounts;
 
 -- create user
-GRANT SELECT ON sample.username
+GRANT SELECT (id, name) ON sample.username
 TO user_read@'%' IDENTIFIED BY '123';
 
 -- ######################

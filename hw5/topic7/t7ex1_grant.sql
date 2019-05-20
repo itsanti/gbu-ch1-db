@@ -2,7 +2,7 @@
 -- ### solution
 -- ######################
 
-GRANT SELECT ON shop.*
+GRANT SELECT, SHOW VIEW ON shop.*
 TO shop_read@'%' IDENTIFIED BY '123';
 
 GRANT ALL ON shop.*

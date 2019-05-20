@@ -2,14 +2,16 @@
 -- ### solution
 -- ######################
 
-CREATE VIEW
-    prod_cat_name
-AS
+CREATE OR REPLACE VIEW prod_cat_name AS
 SELECT
     p.name AS prod_name,
     c.name AS cat_name
 FROM
-    products AS p JOIN catalogs AS c ON p.catalog_id = c.id;
+    products AS p
+JOIN
+    catalogs AS c
+ON
+    p.catalog_id = c.id;
 
 -- ######################
 -- ### result

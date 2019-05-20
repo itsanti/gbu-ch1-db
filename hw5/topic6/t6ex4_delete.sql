@@ -54,3 +54,34 @@ WHERE
     id IN (
         SELECT * FROM result
     );
+
+-- ######################
+-- ### solution 2
+-- ######################
+START TRANSACTION;
+
+PREPARE daydel FROM
+'DELETE FROM days ORDER BY created_at LIMIT ?';
+
+SET @total = (SELECT COUNT(*) - 5 FROM days);
+
+EXECUTE daydel USING @total;
+
+COMMIT;
+
+-- self join
+DELETE
+    posts
+FROM
+    posts
+JOIN
+    (
+        SELECT
+            created_at
+        FROM
+            posts
+        ORDER BY
+            created_at DESC
+    ) AS delpst
+ON
+    posts.created_at <= delpst.created_at;
