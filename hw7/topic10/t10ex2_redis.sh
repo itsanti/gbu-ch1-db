@@ -7,6 +7,7 @@
 > HSET email_name "3@g.com" "alex"
 
 > SADD "alex" "1@g.com" "3@g.com"
+> SADD "jhone" "2@g.com"
 
 ######################
 ### result
