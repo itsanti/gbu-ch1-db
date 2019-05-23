@@ -1,0 +1,55 @@
+redis data types:
+
+string
+number
+list
+hash
+set
+sorted set
+
+> TYPE key
+
+######
+# hash
+######
+
+> HSET admin login "root"
+> HSET admin pass "password"
+
+> HMSET admin login "root" pass "password"
+
+> HGET admin login
+> HVALS admin
+
+# read keys
+> HKEYS admin
+
+# read key - value
+> HGETALL admin
+
+# hash length
+> HLEN admin
+
+#####
+# set
+#####
+> SADD email 1@g.com
+> SADD email 2@g.com
+
+> SADD email 1@g.com 2@g.com 3@g.com
+
+> SREM email 3@g.com
+
+# all elements
+> SMEMBERS email
+
+# random element. decr. collection by 1
+> SPOP email
+
+# set length
+> SCARD email
+
+# set operations
+> SINTER set1 set2
+> SDIFF set1 set2
+> SUNION set1 set2
